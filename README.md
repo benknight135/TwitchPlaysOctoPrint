@@ -2,13 +2,11 @@
 
 ## Setup
 
-Edit gcode.py lines 8,9,12,13 with twitch and octopi account details
-
 ## Run
 
 Python version: 2.7
 
 Command:
 ```bash
-python gcode.py
+python twitchPlaysOctoPrint.py --twitch_user [TWITCH USERNAME] --twitch_key [TWITCH KEY] --oct_ip [OCTOPRINT IP] --oct_key [OCTOPRINT API KEY]
 ```
