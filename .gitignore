@@ -4,3 +4,5 @@ twitch.pyc
 cred
 run_wCred.sh
 .vscode
+log.txt
+twitchPlaysStartup.sh

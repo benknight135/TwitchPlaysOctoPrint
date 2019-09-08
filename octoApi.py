@@ -22,6 +22,16 @@ class OctoApi:
         else:
             self.base_address = 'http://' + address
 
+    def set_pos_x(self,val):
+        self.send_gcode(["G0 X{}".format(val)])
+    def set_pos_y(self,val):
+        self.send_gcode(["G0 Y{}".format(val)])
+    def set_pos_z(self,val):
+        self.send_gcode(["G0 Z{}".format(val)])
+    def set_pos(self,x,y,z):
+        gcode = "G0 X{} Y{} Z{}".format(x,y,z)
+        self.send_gcode([gcode])
+
     def connect_to_printer(self, port=None, baudrate=None, printer_profile=None, save=None, autoconnect=None):
         """
         Connects to the printer
@@ -216,6 +226,7 @@ class OctoApi:
         Sends one or multiple comma separated G-codes to the printer
         :param gcode: G-Code/s to send as a list containing all the G-codes to send
         """
+        print(gcode)
         r = self.s.post(self.base_address + '/api/printer/command', json={'commands': gcode})
         if r.status_code != 204:
             raise Exception("Error: {code} - {content}".format(code=r.status_code, content=r.content.decode('utf-8')))
